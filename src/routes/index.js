@@ -1,10 +1,10 @@
-import React from "react";
+import HomePage from "../pages/Home";
 
 const routes = [
   {
     path: "/home",
     exact: true,
-    component: () => <h1>HOME</h1>,
+    component: HomePage,
   },
 ];
 
