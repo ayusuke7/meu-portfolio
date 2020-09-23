@@ -16,9 +16,7 @@ export default function HomePage() {
           />
         </div>
         <div className="portfolio">
-          {Array.from(Array(15)).map((_, i) => (
-            <CardPortfolio />
-          ))}
+          <CardPortfolio />
         </div>
       </div>
       <div className="footer">

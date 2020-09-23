@@ -1,6 +1,56 @@
 @import "../../styles/colors.scss";
 
-.card-portfolio {
-  height: 200px;
-  background-color: $primary;
+.grid-portfolio {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  overflow-y: scroll;
+  height: 90vh;
+
+  .card-portfolio {
+    height: 200px;
+    background-color: $primary;
+  }
+}
+
+.grid-portfolio::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.grid-portfolio::-webkit-scrollbar {
+  width: 10px;
+}
+
+.grid-portfolio::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: grey;
+}
+
+.tabs-portfolio {
+  display: flex;
+  font-size: 0.61rem;
+  flex-wrap: wrap;
+  cursor: pointer;
+
+  .tab {
+    background-color: $primary-dark;
+    color: grey;
+    height: 40px;
+    width: 100px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .active {
+    background-color: $primary;
+    color: #fff;
+    font-weight: bold;
+  }
 }
