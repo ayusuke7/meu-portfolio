@@ -36,9 +36,9 @@
     }
 
     .socials {
-      img {
-        width: 23px;
-        height: 23px;
+      svg {
+        width: 25px;
+        height: 25px;
         margin-right: 15px;
         cursor: pointer;
       }
@@ -46,6 +46,35 @@
 
     .subtitle {
       font-size: 15px;
+    }
+
+    .like {
+      display: flex;
+      justify-content: center;
+      margin-top: 34px;
+
+      .button {
+        color: #fff;
+        //border: 2px solid #fff;
+        border-radius: 12px;
+        padding: 5px;
+        width: 105px;
+        font-size: 16px;
+        background-color: $primary-light;
+        cursor: pointer;
+
+        svg {
+          fill: #fff;
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      .button:hover {
+        color: #fff;
+        background-color: $blue-light;
+        border: none;
+      }
     }
   }
 }

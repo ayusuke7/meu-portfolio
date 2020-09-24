@@ -1,6 +1,5 @@
 import twitter from "./twitter.svg";
 import github from "./github.svg";
-import githubBlack from "./github-black.svg";
 import instagram from "./instagram.svg";
 import youtube from "./youtube.svg";
 import like from "./like.svg";
@@ -12,7 +11,6 @@ const icons = {
   instagram,
   youtube,
   like,
-  githubBlack,
   linkedin,
 };
 

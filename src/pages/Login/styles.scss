@@ -1,0 +1,74 @@
+@import "../../styles/colors.scss";
+
+.login-root {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  font-size: 14px;
+
+  .form-section {
+    background-color: $primary;
+    width: 460px;
+    height: 500px;
+    padding: 20px;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    label {
+      font-weight: bold;
+    }
+
+    .input-block {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 2px solid grey;
+      width: 260px;
+      height: 42px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+
+      input {
+        height: 30px;
+        width: 100%;
+        background-color: $primary;
+        border: none;
+        outline: none;
+        caret-color: $white;
+        color: $white;
+        margin-left: 12px;
+      }
+    }
+
+    button {
+      height: 40px;
+      width: 100%;
+      color: $white;
+      border-radius: 12px;
+      background-color: $primary-light;
+      text-transform: uppercase;
+      margin-top: 20px;
+      border: none;
+      font-weight: bold;
+    }
+
+    button:hover[type="submit"] {
+      background-color: $blue-light;
+      cursor: pointer;
+    }
+
+    span {
+      text-align: center;
+    }
+
+    a {
+      color: $white;
+      font-weight: bold;
+    }
+  }
+}

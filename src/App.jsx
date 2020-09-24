@@ -13,7 +13,7 @@ export default function App() {
     <Provider store={store}>
       <BrowserRouter history={history}>
         <Switch>
-          <Redirect exact to="/home" from="/" />
+          <Redirect exact from="/" to="/login" />
           {routes.map((route) => (
             <Route key={route.path} {...route} />
           ))}

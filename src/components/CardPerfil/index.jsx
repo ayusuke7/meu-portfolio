@@ -1,8 +1,33 @@
 import React from "react";
-import icons from "../../assets/icons";
+import api from "../../services/api";
+
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitterSquare,
+} from "react-icons/fa";
+
+import { ReactComponent as Like } from "../../assets/icons/like.svg";
+
 import "./styles.scss";
 
 export default function CardPerfil({ foto, title, description }) {
+  const githubLogin = () => {
+    api
+      .get("https://github.com/login/oauth/authorize", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="card-perfil">
       <div className="foto-perfil">
@@ -12,14 +37,18 @@ export default function CardPerfil({ foto, title, description }) {
         <div className="title">
           <h4>{title}</h4>
         </div>
-        <div className="subtitle">
-          ANALISTA DE SISTEMAS, PLENO <br /> São Paulo, SP - Brasil
+        <div className="like">
+          <div className="button" onClick={githubLogin}>
+            <Like />
+            <span> Seguir</span>
+          </div>
         </div>
+        <div className="subtitle">{description}</div>
         <div className="socials">
-          <img src={icons.twitter} alt="github" />
-          <img src={icons.instagram} alt="github" />
-          <img src={icons.github} alt="github" />
-          <img src={icons.linkedin} alt="github" />
+          <FaGithub />
+          <FaInstagram />
+          <FaTwitterSquare />
+          <FaLinkedin />
         </div>
       </div>
     </div>

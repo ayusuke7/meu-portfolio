@@ -1,9 +1,15 @@
 import HomePage from "../pages/Home";
+import LoginPage from "../pages/Login";
 
 const routes = [
   {
-    path: "/home",
     exact: true,
+    path: "/login",
+    component: LoginPage,
+  },
+  {
+    exact: true,
+    path: "/home",
     component: HomePage,
   },
 ];

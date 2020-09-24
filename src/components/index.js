@@ -1,4 +1,4 @@
 import CardPerfil from "./CardPerfil";
-import CardPortfolio from "./CardPortfolio";
+import GridPortfolio from "./GridPortfolio";
 
-export { CardPerfil, CardPortfolio };
+export { CardPerfil, GridPortfolio };
