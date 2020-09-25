@@ -1,6 +1,6 @@
 @import "../../styles/colors.scss";
 
-.login-root {
+.register-root {
   height: 100vh;
   display: grid;
   justify-content: center;
@@ -18,25 +18,20 @@
     align-items: center;
     justify-content: center;
 
+    position: relative;
+
     form {
       width: 300px;
     }
 
+    .icon {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+    }
     h3 {
       text-align: center;
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    span {
-      text-align: center;
-    }
-
-    a {
-      color: $white;
-      font-weight: bold;
     }
   }
 }

@@ -17,4 +17,6 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
+export const action = (type, payload) => store.dispatch({ type, payload });
+
 export default store;

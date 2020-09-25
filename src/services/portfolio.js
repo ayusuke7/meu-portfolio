@@ -1,8 +1,8 @@
 import api from "./api";
 
 class PortfolioService {
-  getAll() {
-    return api.get("/portfolio");
+  getAll(username) {
+    return api.get(`https://api.github.com/users/${username}/repos`);
   }
 
   create(payload) {

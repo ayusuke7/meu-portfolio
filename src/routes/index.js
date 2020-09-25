@@ -1,5 +1,8 @@
 import HomePage from "../pages/Home";
 import LoginPage from "../pages/Login";
+import NotFound from "../pages/NotFound";
+import PerfilPage from "../pages/Perfil";
+import RegisterPage from "../pages/Register";
 
 const routes = [
   {
@@ -9,8 +12,23 @@ const routes = [
   },
   {
     exact: true,
-    path: "/home",
+    path: "/register",
+    component: RegisterPage,
+  },
+  {
+    exact: true,
+    path: "/home/:username",
     component: HomePage,
+  },
+  {
+    exact: true,
+    path: "/perfil/:username",
+    component: PerfilPage,
+  },
+  {
+    exact: true,
+    path: "/*",
+    component: NotFound,
   },
 ];
 

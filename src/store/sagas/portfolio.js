@@ -3,11 +3,11 @@ import { actions } from "../ducks/portfolio";
 
 import ServicePortfolio from "../../services/portfolio";
 
-export function* listarPortfolioRequest() {
+export function* listarPortfolioRequest({ payload }) {
   try {
-    const data = yield call(ServicePortfolio.getAll);
+    const { data } = yield call(ServicePortfolio.getAll, payload);
 
-    yield put(actions.setList(data));
+    yield put(actions.setPortfolios(data));
   } catch (err) {
     console.error(err);
   }

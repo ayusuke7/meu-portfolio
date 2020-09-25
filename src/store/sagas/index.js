@@ -7,5 +7,5 @@ import { types } from "../ducks/portfolio";
 import { listarPortfolioRequest } from "./portfolio";
 
 export default function* rootSaga() {
-  yield all([takeLatest(types.SET_LIST_PORTFOLIOS, listarPortfolioRequest)]);
+  yield all([takeLatest(types.GET_PORTFOLIOS, listarPortfolioRequest)]);
 }

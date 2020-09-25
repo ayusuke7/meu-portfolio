@@ -1,49 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { CardPerfil, GridPortfolio } from "../../components";
-
-import api from "../../services/api";
-import links from "../../constants/links";
-
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { GridPortfolio } from "../../components";
+import { actions } from "../../store/ducks/portfolio";
 import "./styles.scss";
 
-export default function HomePage() {
-  const [repos, setRepo] = useState([]);
+export default function HomePage({ history }) {
+  const dipatch = useDispatch();
+  const portfolio = useSelector((state) => state?.portfolio?.data);
 
-  const getRepos = () => {
-    api
-      .get(links.repositorios)
-      .then(({ data }) => {
-        setRepo(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const getPortfolios = () => {
+    dipatch(actions.getPortfolios("ayusuke7"));
   };
 
   useEffect(() => {
-    getRepos();
+    if (portfolio.length === 0) {
+      getPortfolios();
+    }
   }, []);
 
   return (
     <div className="home-root">
-      <div className="header"></div>
-      <div className="content">
-        <div className="perfil">
-          <CardPerfil
-            foto={links.profile}
-            title="ALEXANDRE H. C. BARBOSA"
-            description="ANALISTA DE SISTEMAS, PLENO São Paulo, SP - Brasil"
-          />
-        </div>
-        <div className="portfolio">
-          <GridPortfolio items={repos} />
-        </div>
-      </div>
-      <div className="footer">
-        <span>
-          Desenvolvido por AYU7 - Copyright © {new Date().getFullYear()}
-        </span>
-      </div>
+      <GridPortfolio items={portfolio} />
     </div>
   );
 }

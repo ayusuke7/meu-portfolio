@@ -2,15 +2,25 @@
  * Constants Types
  */
 const types = {
-  SET_LIST_PORTFOLIOS: "SET_LIST_PORTFOLIOS",
+  GET_PORTFOLIOS: "GET_PORTFOLIOS",
+  SET_PORTFOLIOS: "SET_PORTFOLIOS",
+  SET_MESSAGE: "SET_MESSAGE",
 };
 
 /**
  * Actions creators
  */
 const actions = {
-  setList: (data) => ({
-    type: types.SET_LIST,
+  getPortfolios: (data) => ({
+    type: types.GET_PORTFOLIOS,
+    payload: data,
+  }),
+  setPortfolios: (data) => ({
+    type: types.SET_PORTFOLIOS,
+    payload: data,
+  }),
+  setMessage: (data) => ({
+    type: types.SET_MESSAGE,
     payload: data,
   }),
 };
@@ -26,8 +36,10 @@ const INITIAL_STATE = {
  */
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.SET_LIST:
-      return { ...state, data: action.payload };
+    case types.GET_PORTFOLIOS:
+      return { ...state, loading: true };
+    case types.SET_PORTFOLIOS:
+      return { ...state, loading: false, data: action.payload };
     default:
       return state;
   }

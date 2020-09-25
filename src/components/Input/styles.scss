@@ -1,0 +1,29 @@
+@import "../../styles/colors.scss";
+
+.custom-input {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 2px solid grey;
+  //width: 260px;
+  height: 42px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  background-color: $primary;
+
+  input {
+    height: 30px;
+    width: 100%;
+    background-color: $primary;
+    border: none;
+    outline: none;
+    caret-color: $white;
+    color: $white;
+    margin-left: 12px;
+  }
+
+  svg {
+    fill: $white;
+  }
+}

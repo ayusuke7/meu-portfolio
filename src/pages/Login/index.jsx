@@ -1,40 +1,44 @@
 import React from "react";
-import { FaEnvelope, FaLock, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLock } from "react-icons/fa";
+import { Form } from "@unform/web";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 import "./styles.scss";
 
 export default function LoginPage({ history }) {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (data) => {
     history.push("/home");
   };
 
   return (
     <div className="login-root">
       <section className="form-section">
-        <h2>Meu Portfólio</h2>
-        <div className="form-block">
-          <label>Email</label>
-          <div className="input-block">
-            <FaEnvelope />
-            <input type="text" name="username" />
-          </div>
+        <h3>MEU PORTFÓLIO</h3>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            required
+            iconLeft={<FaEnvelope />}
+            type="text"
+            name="email"
+            autoComplete="off"
+            placeholder="Email"
+            spellCheck="false"
+          />
 
-          <label>Senha</label>
-          <div className="input-block">
-            <FaLock />
-            <input type="password" name="password" />
-          </div>
-          <button type="submit" onClick={handleSubmit}>
-            {"  ENTRAR"}
-          </button>
-          <button type="submit">
-            <FaGithub />
-            {"   GITHUB"}
-          </button>
-        </div>
+          <Input
+            required
+            iconLeft={<FaLock />}
+            type="password"
+            name="password"
+            placeholder="password"
+            autoComplete="new-password"
+          />
+
+          <Button type="submit" label="ENTRAR" />
+        </Form>
         <span>
-          Não tem uma conta? <a href="/#">Registre-se</a>
+          Não tem uma conta? <a href="/register">Registre-se</a>
         </span>
       </section>
     </div>
