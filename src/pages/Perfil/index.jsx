@@ -4,9 +4,8 @@ import {
   FaInstagram,
   FaLinkedin,
   FaTwitterSquare,
+  FaThumbsUp,
 } from "react-icons/fa";
-
-import { ReactComponent as Like } from "../../assets/icons/like.svg";
 
 import links from "../../constants/links";
 import Button from "../../components/Button";
@@ -29,7 +28,7 @@ export default function PerfilPage() {
               <h6>{""}</h6>
             </div>
             <div className="like">
-              <Button label="Seguir" icon={<Like />} />
+              <Button label="Seguir" icon={<FaThumbsUp />} />
             </div>
             <div className="socials">
               <FaGithub />

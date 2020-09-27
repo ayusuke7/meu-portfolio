@@ -22,6 +22,7 @@ export default function RouteWrapper({
    * Redirect user to Main page if he tries to access a non private route
    * (SignIn or SignUp) after being authenticated.
    */
+
   if (!isPrivate && signed) {
     return <Redirect to={`/perfil/${user?.username}`} />;
   }

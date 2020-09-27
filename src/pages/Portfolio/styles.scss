@@ -1,6 +1,6 @@
 @import "../../styles/colors.scss";
 
-.grid-root {
+.portfolio-root {
   display: flex;
   justify-content: space-between;
   max-width: 1400px;
@@ -8,30 +8,7 @@
   margin: auto;
 
   .section-left {
-    width: 6%;
-    background-color: $primary;
-    color: $white;
-
-    .icon {
-      align-items: center;
-      border: 2px solid $grey-light;
-      height: 40px;
-      width: 40px;
-      border-radius: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      margin: 20px auto;
-    }
-
-    svg {
-      cursor: pointer;
-    }
-  }
-
-  .section-center {
-    width: 42%;
+    width: 50%;
   }
 
   .section-right {

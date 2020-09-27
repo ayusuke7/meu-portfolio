@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { FaGithub, FaUserAlt } from "react-icons/fa";
-import { dataHtml } from "../../constants/texts";
+import React, { useEffect, useState } from "react";
+import { FaGithub } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import { dataHtml } from "../../constants/texts";
 import { actions } from "../../store/ducks/portfolio";
+
 import PreviewHtml from "../../components/PreviewHtml";
 
 import "./styles.scss";
@@ -17,7 +18,7 @@ export default function PortfolioPage({ history }) {
 
   const getPortfolios = () => {
     const { location } = history;
-    const username = location?.pathname?.split("/").slice(-1)[0] || "ayusuke7";
+    const username = location?.pathname?.split("/").slice(-1)[0] || "";
     dipatch(actions.getPortfolios(username));
   };
 
@@ -36,8 +37,6 @@ export default function PortfolioPage({ history }) {
     }, []);
   };
 
-  console.log(state);
-
   const languages = filterLanguages();
   const filter =
     state?.tab === "Todas"
@@ -45,17 +44,8 @@ export default function PortfolioPage({ history }) {
       : portfolio.filter((f) => f?.language === state?.tab);
 
   return (
-    <div className="grid-root">
+    <div className="portfolio-root">
       <div className="section-left">
-        <div className="icon">
-          <FaUserAlt />
-        </div>
-        <div className="icon">
-          <FaUserAlt />
-        </div>
-      </div>
-
-      <div className="section-center">
         <div className="tabs-portfolio">
           {["Todas", ...languages].map((item, i) => (
             <div
@@ -107,7 +97,7 @@ export default function PortfolioPage({ history }) {
       </div>
 
       <div className="section-right">
-        {state?.selectPortfolio != null && <PreviewHtml html={dataHtml} />}
+        {state?.selectPortfolio && <PreviewHtml html={dataHtml} />}
       </div>
     </div>
   );

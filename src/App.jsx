@@ -1,16 +1,12 @@
 import React from "react";
 
-import RouteWrapper from "./routes";
-import routes from "./routes/routes";
+import { Provider } from "react-redux";
+import { Switch, BrowserRouter, Redirect, Route } from "react-router-dom";
+import { Header, Footer } from "./components";
+// import RouteWrapper from "./routes";
 
 import store from "./store";
-
-import { Switch, BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-
+import routes from "./routes/routes";
 import history from "./utils/history";
 
 export default function App() {
@@ -19,8 +15,9 @@ export default function App() {
       <BrowserRouter history={history}>
         <Header />
         <Switch>
+          <Redirect exact from="/" to="/perfil" />
           {routes.map((route) => (
-            <RouteWrapper key={route.path} {...route} />
+            <Route key={route.path} {...route} />
           ))}
         </Switch>
         <Footer />

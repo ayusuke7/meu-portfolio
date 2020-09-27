@@ -1,5 +1,4 @@
 import React from "react";
-import history from "../../utils/history";
 
 import { Input } from "../../components";
 import { Form } from "@unform/web";
@@ -9,14 +8,10 @@ import storage from "../../utils/storage";
 import "./styles.scss";
 
 export default function Header() {
-  const { pathname } = history?.location;
-  const isRender =
-    pathname !== "/" &&
-    !pathname.includes("/login") &&
-    !pathname.includes("/register");
+  const user = storage.getUser();
 
   return (
-    isRender && (
+    user && (
       <div className="header">
         <Form>
           <Input
@@ -25,8 +20,8 @@ export default function Header() {
             placeholder="Pesquisar"
           />
         </Form>
-        <a href="/perfil/ayusuke7">PERFIL</a>
-        <a href="/portfolio/ayusuke7">PORTFÓLIO</a>
+        <a href={`/perfil/${user?.username}`}>PERFIL</a>
+        <a href={`/portfolio/${user?.username}`}>PORTFÓLIO</a>
         <a
           href="/login"
           onClick={() => {

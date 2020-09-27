@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEnvelope, FaGithub, FaLock } from "react-icons/fa";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 import { Form } from "@unform/web";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -47,10 +47,10 @@ export default function LoginPage({ history }) {
             Não tem uma conta? <a href="/register">Registre-se</a>
           </span>
         </Form>
-        <div>
+        {/* <div>
           <h5>OU</h5>
           <Button icon={<FaGithub />} label="USAR PERFIL DO GITHUB" />
-        </div>
+        </div> */}
       </section>
     </div>
   );
