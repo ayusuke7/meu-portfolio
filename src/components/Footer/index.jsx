@@ -6,7 +6,9 @@ import "./styles.scss";
 export default function Footer() {
   const { pathname } = history?.location;
   const isRender =
-    !pathname.includes("/login") && !pathname.includes("/register");
+    pathname !== "/" &&
+    !pathname.includes("/login") &&
+    !pathname.includes("/register");
 
   return (
     isRender && (

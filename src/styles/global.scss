@@ -11,3 +11,22 @@
 body {
   background-color: $primary-dark;
 }
+
+a:link {
+  color: $white;
+}
+
+/* visited link */
+a:visited {
+  color: $white;
+}
+
+/* mouse over link */
+a:hover {
+  color: $blue-light;
+}
+
+/* selected link */
+a:active {
+  color: none;
+}

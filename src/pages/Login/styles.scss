@@ -11,8 +11,9 @@
   .form-section {
     background-color: $primary;
     width: 450px;
-    height: 450px;
-    padding: 20px;
+    height: 460px;
+    padding: 30px 10px;
+    text-align: center;
 
     display: grid;
     align-items: center;
@@ -22,21 +23,16 @@
       width: 300px;
     }
 
-    h3 {
-      text-align: center;
-    }
-
     label {
       font-weight: bold;
     }
 
-    span {
-      text-align: center;
+    a {
+      font-weight: bold;
     }
 
-    a {
-      color: $white;
-      font-weight: bold;
+    button {
+      margin-top: 15px;
     }
   }
 }

@@ -1,14 +1,18 @@
 import React from "react";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLock } from "react-icons/fa";
 import { Form } from "@unform/web";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import storage from "../../utils/storage";
 
 import "./styles.scss";
 
 export default function LoginPage({ history }) {
   const handleSubmit = (data) => {
-    history.push("/home");
+    storage.setUser({
+      username: "ayusuke7",
+    });
+    history.push("/perfil/ayusuke7");
   };
 
   return (
@@ -24,6 +28,7 @@ export default function LoginPage({ history }) {
             autoComplete="off"
             placeholder="Email"
             spellCheck="false"
+            defaultValue="email@example.com"
           />
 
           <Input
@@ -33,13 +38,19 @@ export default function LoginPage({ history }) {
             name="password"
             placeholder="password"
             autoComplete="new-password"
+            defaultValue="1234"
           />
 
           <Button type="submit" label="ENTRAR" />
+          <br />
+          <span>
+            Não tem uma conta? <a href="/register">Registre-se</a>
+          </span>
         </Form>
-        <span>
-          Não tem uma conta? <a href="/register">Registre-se</a>
-        </span>
+        <div>
+          <h5>OU</h5>
+          <Button icon={<FaGithub />} label="USAR PERFIL DO GITHUB" />
+        </div>
       </section>
     </div>
   );

@@ -1,10 +1,13 @@
 import React from "react";
-import routes from "./routes";
+
+import RouteWrapper from "./routes";
+import routes from "./routes/routes";
+
 import store from "./store";
 
-import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
-
+import { Switch, BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -16,9 +19,8 @@ export default function App() {
       <BrowserRouter history={history}>
         <Header />
         <Switch>
-          <Redirect exact from="/" to="/login" />
           {routes.map((route) => (
-            <Route key={route.path} {...route} />
+            <RouteWrapper key={route.path} {...route} />
           ))}
         </Switch>
         <Footer />

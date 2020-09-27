@@ -22,6 +22,7 @@ export default function RegisterPage({ history }) {
           <FaArrowLeft />
         </div>
         <h3>NOVO CADASTRO</h3>
+
         <Form onSubmit={handleSubmit}>
           <Input
             required
@@ -57,6 +58,7 @@ export default function RegisterPage({ history }) {
             placeholder="Confirma Senha"
           />
 
+          <br />
           <Button type="submit" label="CADASTRAR" />
         </Form>
       </section>

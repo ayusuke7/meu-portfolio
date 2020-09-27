@@ -1,35 +1,33 @@
-import HomePage from "../pages/Home";
-import LoginPage from "../pages/Login";
-import NotFound from "../pages/NotFound";
-import PerfilPage from "../pages/Perfil";
-import RegisterPage from "../pages/Register";
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import storage from "../utils/storage";
 
-const routes = [
-  {
-    exact: true,
-    path: "/login",
-    component: LoginPage,
-  },
-  {
-    exact: true,
-    path: "/register",
-    component: RegisterPage,
-  },
-  {
-    exact: true,
-    path: "/home/:username",
-    component: HomePage,
-  },
-  {
-    exact: true,
-    path: "/perfil/:username",
-    component: PerfilPage,
-  },
-  {
-    exact: true,
-    path: "/*",
-    component: NotFound,
-  },
-];
+export default function RouteWrapper({
+  component: Component,
+  isPrivate,
+  ...rest
+}) {
+  const user = storage.getUser();
+  const signed = Boolean(user);
 
-export default routes;
+  /**
+   * Redirect user to SignIn page if he tries to access a private route
+   * without authentication.
+   */
+  if (isPrivate && !signed) {
+    return <Redirect to="/login" />;
+  }
+
+  /**
+   * Redirect user to Main page if he tries to access a non private route
+   * (SignIn or SignUp) after being authenticated.
+   */
+  if (!isPrivate && signed) {
+    return <Redirect to={`/perfil/${user?.username}`} />;
+  }
+
+  /**
+   * If not included on both previous cases, redirect user to the desired route.
+   */
+  return <Route {...rest} component={Component} />;
+}
