@@ -1,34 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { FaGithub } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { dataHtml } from "../../constants/texts";
+import { FaGithub } from "react-icons/fa";
 import { actions } from "../../store/ducks/portfolio";
-
+import storage from "../../utils/storage";
 import PreviewHtml from "../../components/PreviewHtml";
 
 import "./styles.scss";
 
 export default function PortfolioPage({ history }) {
   const dipatch = useDispatch();
+  const user = storage.getUser();
+
   const portfolio = useSelector((state) => state?.portfolio?.data);
-  const [state, setState] = useState({
-    tab: "Todas",
-    selectPortfolio: null,
-  });
+
+  const [tab, setTab] = useState("Todas");
+  const [select, setSelect] = useState(null);
 
   const getPortfolios = () => {
     const { location } = history;
     const username = location?.pathname?.split("/").slice(-1)[0] || "";
-    dipatch(actions.getPortfolios(username));
+    if (username) {
+      dipatch(actions.getPortfolios(username));
+    }
   };
 
   useEffect(() => {
-    if (portfolio.length === 0) {
-      getPortfolios();
-    }
+    getPortfolios();
   }, []);
 
   const filterLanguages = () => {
+    if (!portfolio) return [];
+
     return portfolio.reduce((acum, item) => {
       if (!acum.includes(item.language)) {
         acum.push(item.language);
@@ -38,10 +40,6 @@ export default function PortfolioPage({ history }) {
   };
 
   const languages = filterLanguages();
-  const filter =
-    state?.tab === "Todas"
-      ? portfolio
-      : portfolio.filter((f) => f?.language === state?.tab);
 
   return (
     <div className="portfolio-root">
@@ -50,40 +48,27 @@ export default function PortfolioPage({ history }) {
           {["Todas", ...languages].map((item, i) => (
             <div
               key={i.toString()}
-              className={"tab ".concat(item === state?.tab ? "active" : "")}
-              onClick={() => {
-                setState((prev) => ({
-                  ...prev,
-                  tab: item,
-                }));
-              }}
+              className={"tab ".concat(item === tab ? "active" : "")}
+              onClick={() => setTab(tab)}
             >
               {item || "???"}
             </div>
           ))}
         </div>
         <div className="grid-portfolio">
-          {filter.map((item, i) => (
+          {portfolio?.map((item, i) => (
             <div
               key={i.toString()}
               className={"card-portfolio ".concat(
-                item?.name === state?.selectPortfolio ? "selected" : ""
+                item?.name === select ? "selected" : ""
               )}
             >
-              <div
-                className="title"
-                onClick={() => {
-                  setState((prev) => ({
-                    ...prev,
-                    selectPortfolio: item?.name,
-                  }));
-                }}
-              >
+              <div className="title" onClick={() => setSelect(item?.name)}>
                 <span>{item.name}</span>
-                <h6>{item.language || "???"}</h6>
+                <h6>{item.languages || "???"}</h6>
               </div>
               <div className="options">
-                <a href={item.clone_url} target="__blank">
+                <a href={item.url} target="__blank">
                   <FaGithub />
                 </a>
                 <div>
@@ -97,7 +82,7 @@ export default function PortfolioPage({ history }) {
       </div>
 
       <div className="section-right">
-        {state?.selectPortfolio && <PreviewHtml html={dataHtml} />}
+        {select && <PreviewHtml html={select?.description} />}
       </div>
     </div>
   );

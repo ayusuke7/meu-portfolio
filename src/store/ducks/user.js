@@ -2,25 +2,30 @@
  * Constants Types
  */
 const types = {
-  GET_PORTFOLIOS: "GET_PORTFOLIOS",
-  SET_PORTFOLIOS: "SET_PORTFOLIOS",
-  SET_PORTFOLIO_MESSAGE: "SET_PORTFOLIO_MESSAGE",
+  REQUEST_LOGIN: "REQUEST_LOGIN",
+  RESPONSE_LOGIN: "RESPONSE_LOGIN",
+  REQUEST_REGISTER: "REQUEST_REGISTER",
+  AUTH_SET_MESSAGE: "AUTH_SET_MESSAGE",
 };
 
 /**
  * Actions creators
  */
 const actions = {
-  getPortfolios: (data) => ({
-    type: types.GET_PORTFOLIOS,
+  requestLogin: (data) => ({
+    type: types.REQUEST_LOGIN,
     payload: data,
   }),
-  setPortfolios: (data) => ({
-    type: types.SET_PORTFOLIOS,
+  responseLogin: (data) => ({
+    type: types.RESPONSE_LOGIN,
+    payload: data,
+  }),
+  requestRegister: (data) => ({
+    type: types.REQUEST_REGISTER,
     payload: data,
   }),
   setMessage: (data) => ({
-    type: types.SET_PORTFOLIO_MESSAGE,
+    type: types.AUTH_SET_MESSAGE,
     payload: data,
   }),
 };
@@ -36,11 +41,13 @@ const INITIAL_STATE = {
  */
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.GET_PORTFOLIOS:
+    case types.REQUEST_REGISTER:
       return { ...state, loading: true };
-    case types.SET_PORTFOLIOS:
+    case types.REQUEST_LOGIN:
+      return { ...state, loading: true };
+    case types.RESPONSE_LOGIN:
       return { ...state, loading: false, data: action.payload };
-    case types.SET_PORTFOLIO_MESSAGE:
+    case types.AUTH_SET_MESSAGE:
       return { ...state, loading: false, message: action.payload };
     default:
       return state;

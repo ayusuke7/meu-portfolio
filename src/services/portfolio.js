@@ -1,21 +1,16 @@
+import endpoints from "../constants/endpoints";
 import api from "./api";
 
-class PortfolioService {
-  getAll(username) {
-    return api.get(`https://api.github.com/users/${username}/repos`);
+export default class PortfolioService {
+  findByUsername(username) {
+    return api.get(`${endpoints.PORTFOLIO}/${username}`);
   }
 
   create(payload) {
-    return api.post("/portfolio", payload);
+    return api.post(endpoints.PORTFOLIO, payload);
   }
 
   update(payload) {
-    return api.put("/portfolio", payload);
-  }
-
-  delete(id) {
-    return api.delete("/portfolio/" + id);
+    return api.put(endpoints.PORTFOLIO, payload);
   }
 }
-
-export default new PortfolioService();

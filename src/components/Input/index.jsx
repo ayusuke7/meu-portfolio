@@ -3,7 +3,16 @@ import { useField } from "@unform/core";
 
 import "./styles.scss";
 
-export default function Input({ iconLeft, name, ...rest }) {
+export const TextField = ({ iconLeft, ...props }) => {
+  return (
+    <div className="custom-input">
+      {iconLeft}
+      <input {...props} />
+    </div>
+  );
+};
+
+export default function InputField({ name, ...rest }) {
   const inputRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
 
@@ -16,10 +25,5 @@ export default function Input({ iconLeft, name, ...rest }) {
     });
   }, [error, fieldName, registerField]);
 
-  return (
-    <div className="custom-input">
-      {iconLeft}
-      <input ref={inputRef} defaultValue={defaultValue} {...rest} />
-    </div>
-  );
+  return <TextField ref={inputRef} defaultValue={defaultValue} {...rest} />;
 }

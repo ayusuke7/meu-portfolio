@@ -26,25 +26,21 @@ const routes = [
     exact: true,
     path: "/perfil/:username",
     component: PerfilPage,
-    isPrivate: false,
   },
   {
     exact: true,
     path: "/portfolio/:username",
     component: PortfolioPage,
-    isPrivate: false,
   },
   {
     exact: true,
     path: "/portfolio/:username/:portfolio",
     component: NotFound,
-    isPrivate: true,
   },
   {
     exact: true,
     path: "/*",
     component: NotFound,
-    isPrivate: true,
   },
 ];
 

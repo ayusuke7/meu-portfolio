@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Input } from "../../components";
-import { Form } from "@unform/web";
+import { TextField } from "../../components";
 import { FaSearch } from "react-icons/fa";
 import storage from "../../utils/storage";
 
@@ -13,13 +12,11 @@ export default function Header() {
   return (
     user && (
       <div className="header">
-        <Form>
-          <Input
-            iconLeft={<FaSearch />}
-            name="search"
-            placeholder="Pesquisar"
-          />
-        </Form>
+        <TextField
+          iconLeft={<FaSearch />}
+          name="search"
+          placeholder="Pesquisar"
+        />
         <a href={`/perfil/${user?.username}`}>PERFIL</a>
         <a href={`/portfolio/${user?.username}`}>PORTFÓLIO</a>
         <a

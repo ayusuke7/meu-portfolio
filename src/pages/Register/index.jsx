@@ -1,15 +1,13 @@
 import React from "react";
-import Input from "../../components/Input";
 import { Form } from "@unform/web";
 import { FaEnvelope, FaLock, FaArrowLeft, FaUserPlus } from "react-icons/fa";
-
-import "./styles.scss";
+import { InputField } from "../../components";
 import Button from "../../components/Button";
 
+import "./styles.scss";
+
 export default function RegisterPage({ history }) {
-  const handleSubmit = (data) => {
-    history.push("/login");
-  };
+  const handleSubmit = (data) => {};
 
   const onNavigateBack = () => {
     history.goBack();
@@ -24,7 +22,7 @@ export default function RegisterPage({ history }) {
         <h3>NOVO CADASTRO</h3>
 
         <Form onSubmit={handleSubmit}>
-          <Input
+          <InputField
             required
             iconLeft={<FaUserPlus />}
             type="text"
@@ -32,7 +30,15 @@ export default function RegisterPage({ history }) {
             autoComplete="off"
             placeholder="Nome"
           />
-          <Input
+          <InputField
+            required
+            iconLeft={<FaUserPlus />}
+            type="text"
+            name="username"
+            autoComplete="off"
+            placeholder="Username"
+          />
+          <InputField
             required
             iconLeft={<FaEnvelope />}
             type="text"
@@ -41,7 +47,7 @@ export default function RegisterPage({ history }) {
             placeholder="Email"
             spellCheck="false"
           />
-          <Input
+          <InputField
             required
             iconLeft={<FaLock />}
             type="password"
@@ -49,7 +55,7 @@ export default function RegisterPage({ history }) {
             autoComplete="new-password"
             placeholder="Senha"
           />
-          <Input
+          <InputField
             required
             iconLeft={<FaLock />}
             type="password"

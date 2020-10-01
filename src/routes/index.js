@@ -5,30 +5,20 @@ import storage from "../utils/storage";
 export default function RouteWrapper({
   component: Component,
   isPrivate,
+  path,
   ...rest
 }) {
   const user = storage.getUser();
   const signed = Boolean(user);
 
-  /**
-   * Redirect user to SignIn page if he tries to access a private route
-   * without authentication.
-   */
-  if (isPrivate && !signed) {
-    return <Redirect to="/login" />;
-  }
+  const redirect = ["/login", "/register"];
 
-  /**
-   * Redirect user to Main page if he tries to access a non private route
-   * (SignIn or SignUp) after being authenticated.
-   */
-
-  if (!isPrivate && signed) {
+  if (redirect.includes(path) && signed) {
     return <Redirect to={`/perfil/${user?.username}`} />;
   }
 
   /**
    * If not included on both previous cases, redirect user to the desired route.
    */
-  return <Route {...rest} component={Component} />;
+  return <Route {...rest} path={path} component={Component} />;
 }

@@ -1,18 +1,19 @@
 import React from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { Form } from "@unform/web";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import storage from "../../utils/storage";
+import { InputField, Button } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
+import { actions } from "../../store/ducks/user";
 
 import "./styles.scss";
 
 export default function LoginPage({ history }) {
+  const dispatch = useDispatch();
+
+  const { loading } = useSelector((state) => state.user);
+
   const handleSubmit = (data) => {
-    storage.setUser({
-      username: "ayusuke7",
-    });
-    history.push("/perfil/ayusuke7");
+    dispatch(actions.requestLogin(data));
   };
 
   return (
@@ -20,7 +21,7 @@ export default function LoginPage({ history }) {
       <section className="form-section">
         <h3>MEU PORTFÓLIO</h3>
         <Form onSubmit={handleSubmit}>
-          <Input
+          <InputField
             required
             iconLeft={<FaEnvelope />}
             type="text"
@@ -28,20 +29,18 @@ export default function LoginPage({ history }) {
             autoComplete="off"
             placeholder="Email"
             spellCheck="false"
-            defaultValue="email@example.com"
           />
 
-          <Input
+          <InputField
             required
             iconLeft={<FaLock />}
             type="password"
             name="password"
             placeholder="password"
             autoComplete="new-password"
-            defaultValue="1234"
           />
 
-          <Button type="submit" label="ENTRAR" />
+          {!loading && <Button type="submit" label="ENTRAR" />}
           <br />
           <span>
             Não tem uma conta? <a href="/register">Registre-se</a>

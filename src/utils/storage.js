@@ -13,7 +13,7 @@ const storage = {
   },
 
   removeUser: () => {
-    window.sessionStorage.clear();
+    window.sessionStorage.removeItem(KEY_USER);
   },
 };
 
