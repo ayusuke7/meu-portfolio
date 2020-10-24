@@ -1,29 +1,37 @@
 import React from "react";
-import { FaEnvelope, FaLock } from "react-icons/fa";
 import { Form } from "@unform/web";
 import { InputField, Button } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../../store/ducks/user";
+import { useStyles } from "./styles";
+import { CircularProgress, Grid, Typography } from "@material-ui/core";
+import { Email, Lock } from "@material-ui/icons";
 
-import "./styles.scss";
-
-export default function LoginPage({ history }) {
+export default function LoginPage() {
+  const classes = useStyles();
   const dispatch = useDispatch();
 
   const { loading } = useSelector((state) => state.user);
 
   const handleSubmit = (data) => {
+    console.log(data);
     dispatch(actions.requestLogin(data));
   };
 
   return (
-    <div className="login-root">
-      <section className="form-section">
-        <h3>MEU PORTFÓLIO</h3>
+    <div className={classes.root}>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        direction="column"
+        className={classes.form}
+      >
+        <Typography>MEU PORTFÓLIO</Typography>
         <Form onSubmit={handleSubmit}>
           <InputField
             required
-            iconLeft={<FaEnvelope />}
+            iconLeft={<Email />}
             type="text"
             name="email"
             autoComplete="off"
@@ -33,24 +41,25 @@ export default function LoginPage({ history }) {
 
           <InputField
             required
-            iconLeft={<FaLock />}
+            iconLeft={<Lock />}
             type="password"
             name="password"
             placeholder="password"
             autoComplete="new-password"
           />
 
-          {!loading && <Button type="submit" label="ENTRAR" />}
+          {loading ? (
+            <CircularProgress color="secondary" />
+          ) : (
+            <Button type="submit" label="ENTRAR" />
+          )}
+          <br />
           <br />
           <span>
             Não tem uma conta? <a href="/register">Registre-se</a>
           </span>
         </Form>
-        {/* <div>
-          <h5>OU</h5>
-          <Button icon={<FaGithub />} label="USAR PERFIL DO GITHUB" />
-        </div> */}
-      </section>
+      </Grid>
     </div>
   );
 }

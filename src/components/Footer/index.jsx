@@ -1,9 +1,11 @@
 import React from "react";
-import "./styles.scss";
+import { useStyles } from "./styles";
 
 export default function Footer() {
+  const classes = useStyles();
+
   return (
-    <div className="footer">
+    <div className={classes.footer}>
       <span>
         Desenvolvido por AYU7 - Copyright © {new Date().getFullYear()}
       </span>

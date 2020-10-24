@@ -1,11 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { useField } from "@unform/core";
-
-import "./styles.scss";
+import { useStyles } from "./styles";
 
 export const TextField = ({ iconLeft, ...props }) => {
+  const classes = useStyles();
+
   return (
-    <div className="custom-input">
+    <div className={classes.inputBlock}>
       {iconLeft}
       <input {...props} />
     </div>

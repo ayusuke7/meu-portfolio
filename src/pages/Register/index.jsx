@@ -1,12 +1,15 @@
 import React from "react";
 import { Form } from "@unform/web";
-import { FaEnvelope, FaLock, FaArrowLeft, FaUserPlus } from "react-icons/fa";
 import { InputField } from "../../components";
-import Button from "../../components/Button";
 
-import "./styles.scss";
+import { useStyles } from "./styles";
+import { Grid, IconButton, Typography } from "@material-ui/core";
+import { ArrowBack, Email, Lock, AccountBox } from "@material-ui/icons";
+import { Button } from "../../components";
 
 export default function RegisterPage({ history }) {
+  const classes = useStyles();
+
   const handleSubmit = (data) => {};
 
   const onNavigateBack = () => {
@@ -14,17 +17,23 @@ export default function RegisterPage({ history }) {
   };
 
   return (
-    <div className="register-root">
-      <section className="form-section">
-        <div className="icon" onClick={onNavigateBack}>
-          <FaArrowLeft />
-        </div>
-        <h3>NOVO CADASTRO</h3>
+    <div className={classes.root}>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        direction="column"
+        className={classes.form}
+      >
+        <IconButton className={classes.icon} onClick={onNavigateBack}>
+          <ArrowBack />
+        </IconButton>
+        <Typography>NOVO CADASTRO</Typography>
 
         <Form onSubmit={handleSubmit}>
           <InputField
             required
-            iconLeft={<FaUserPlus />}
+            iconLeft={<AccountBox />}
             type="text"
             name="name"
             autoComplete="off"
@@ -32,7 +41,7 @@ export default function RegisterPage({ history }) {
           />
           <InputField
             required
-            iconLeft={<FaUserPlus />}
+            iconLeft={<AccountBox />}
             type="text"
             name="username"
             autoComplete="off"
@@ -40,7 +49,7 @@ export default function RegisterPage({ history }) {
           />
           <InputField
             required
-            iconLeft={<FaEnvelope />}
+            iconLeft={<Email />}
             type="text"
             name="email"
             autoComplete="off"
@@ -49,7 +58,7 @@ export default function RegisterPage({ history }) {
           />
           <InputField
             required
-            iconLeft={<FaLock />}
+            iconLeft={<Lock />}
             type="password"
             name="password"
             autoComplete="new-password"
@@ -57,7 +66,7 @@ export default function RegisterPage({ history }) {
           />
           <InputField
             required
-            iconLeft={<FaLock />}
+            iconLeft={<Lock />}
             type="password"
             name="password"
             autoComplete="off"
@@ -67,7 +76,7 @@ export default function RegisterPage({ history }) {
           <br />
           <Button type="submit" label="CADASTRAR" />
         </Form>
-      </section>
+      </Grid>
     </div>
   );
 }
