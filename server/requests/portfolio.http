@@ -1,0 +1,13 @@
+GET http://localhost:3333/portfolio
+
+###
+
+POST http://localhost:3333/portfolio
+content-type: application/json
+
+{
+	"name": "Repo1",
+	"url": "http://repository.github.com.br",
+	"descprition": "sadasdsa",
+	"userId": "5f6a27a1e5d147a7187469db"
+}
