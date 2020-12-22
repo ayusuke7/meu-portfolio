@@ -1,0 +1,73 @@
+@import "../../styles/colors.scss";
+
+.perfil-root {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+
+  .section {
+    width: 800px;
+
+    .card-perfil {
+      height: 100%;
+      padding: 40px 10px;
+      background-color: $primary;
+      text-align: center;
+      color: $white;
+
+      position: relative;
+
+      .foto-perfil {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 5px solid $white;
+        padding: 2px;
+        margin: 30px auto;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 50%;
+        }
+      }
+
+      .conteudo-perfil {
+        margin: auto;
+
+        .title,
+        .subtitle,
+        .socials {
+          margin-top: 40px;
+        }
+
+        .description {
+          color: $grey;
+        }
+
+        .socials {
+          svg {
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+            cursor: pointer;
+          }
+        }
+
+        .like {
+          width: 160px;
+          margin: 20px auto;
+        }
+      }
+    }
+
+    .card {
+      background-color: $primary;
+      height: 120px;
+      margin-top: 20px;
+    }
+  }
+}
